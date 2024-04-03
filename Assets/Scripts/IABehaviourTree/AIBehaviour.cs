@@ -9,7 +9,7 @@ public class AIBehaviour{
         m_RandomNode = new RandomChoiceNode(m_AI);
     }
 
-    public GameManager.Choice GetAIChoice(){
+    public Match.Choice GetAIChoice(){
         if(!m_EvaluateNode.Execute())
             m_RandomNode.Execute();
         
