@@ -8,10 +8,13 @@ public class Match : MonoBehaviour
     private Choice m_AIChoice;
     private Choice m_PlayerChoice;
     [SerializeField] MatchCountdown m_MatchCountdown;
+    private Player m_Player;
+    private CPU m_CPU;
 
     void Start(){
         m_AIBehaviour = new AIBehaviour();
-        StartMatch();
+        m_Player = FindObjectOfType<Player>();
+        m_CPU = FindObjectOfType<CPU>();
     }
 
     public void SetPlayerChoice(int choice){
@@ -49,6 +52,10 @@ public class Match : MonoBehaviour
 
     void ShowMeTheResult(){
         int result = MatchResult();
+
+        if(result == 0) m_CPU.TakeDamage(1);
+        if(result == 2) m_Player.TakeDamage(1);
+
         m_AIBehaviour.AddMatchEntry(new RockPaperScissorsAI.MatchHistoryEnter(){
             playerChoice = m_PlayerChoice,
             iAChoice = m_AIChoice,

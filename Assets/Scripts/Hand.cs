@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour{
     protected int m_Health;
-    protected int m_MaxHealth;
+    protected int m_MaxHealth = 10;
+    public int Health => m_Health;
+    public int MaxHealth => m_MaxHealth;
+    protected HealthBarPresenter m_HealthBarPresenter;
 
     public void SetMaxHealth(int maxHealth){
         m_MaxHealth = maxHealth;
@@ -12,6 +15,7 @@ public class Hand : MonoBehaviour{
     public void TakeDamage(int damage){
         int damageTaken = Mathf.Min(m_Health, damage);
         m_Health -= damageTaken;
+        m_HealthBarPresenter.SetHealth();
     }
 
     public bool IsDead(){      

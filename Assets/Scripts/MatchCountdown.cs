@@ -8,10 +8,11 @@ public class MatchCountdown : MonoBehaviour{
     private MatchCountdownPresenter m_CountdownPresenter;
 
     void Start(){
-        m_CountdownPresenter = new MatchCountdownPresenter(this, GameObject.FindObjectOfType<MatchCountdownView>());
+        m_CountdownPresenter = new MatchCountdownPresenter(this, FindObjectOfType<MatchCountdownView>());
     }
 
     public void Init(){
+        timeLeft = 3;
         StartCoroutine(Countdown());
         m_CountdownPresenter.StartCountdown();
     }
