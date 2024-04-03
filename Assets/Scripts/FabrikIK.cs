@@ -3,11 +3,13 @@ using UnityEngine;
 public class FabrikIK : MonoBehaviour{
     [SerializeField] Transform[] bones;
     private float[] m_BonesLengths;
+    private Quaternion[] m_InitialRotations;
     [SerializeField] int fabrikIterations = 5; //Times we apply Fabrik Method
     [SerializeField] Transform targetPosition;
 
     void Start(){
         CalculateBonesLengths();
+        StoreInitialRotations();
     }
 
     void CalculateBonesLengths(){
@@ -16,6 +18,13 @@ public class FabrikIK : MonoBehaviour{
         //Calculate each bone length. Last bone have 0 length
         for(int i=0; i < bones.Length; i++)
             m_BonesLengths[i] = i < bones.Length - 1 ? (bones[i+1].position - bones[i].position).magnitude : 0;
+    }
+
+    void StoreInitialRotations(){
+        m_InitialRotations = new Quaternion[bones.Length];
+
+        for(int i=0; i < bones.Length; i++)
+            m_InitialRotations[i] = bones[i].localRotation;
     }
 
     void Update(){
@@ -33,12 +42,18 @@ public class FabrikIK : MonoBehaviour{
         for(int i=0; i < fabrikIterations; i++)
             finalBonesPositions = SolveForwardPositions(SolveInversePositions(finalBonesPositions));
 
-        //Apply each bone his result position
+        //Apply each bone his result position and rotation
         for(int i=0; i < bones.Length; i++){
             bones[i].position = finalBonesPositions[i];
+            /*
+            bones[i].rotation = m_InitialRotations[i]; //Reset rotation
 
             //Apply rotation to each bone looks at next one
-            bones[i].rotation = i != bones.Length - 1 ? Quaternion.LookRotation(finalBonesPositions[i+1] - bones[i].position) : Quaternion.LookRotation(targetPosition.position - bones[i].position);
+            Quaternion targetRotation = i != bones.Length - 1 ? 
+                Quaternion.LookRotation(finalBonesPositions[i+1] - bones[i].position) : 
+                Quaternion.LookRotation(targetPosition.position - bones[i].position);
+            bones[i].rotation = bones[i].rotation * targetRotation;
+            */
         }
     }
 
