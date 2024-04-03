@@ -1,7 +1,14 @@
 using UnityEngine;
 
 public class GameManager : MonoBehaviour{
-    public enum Choice { Rock, Paper, Scissors };
-    public AIBehaviour aIBehaviour;
-    public Choice playerChoice;
+    public static GameManager Instance;
+
+    void Awake(){
+        if(Instance != null){
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }else{
+            Destroy(this);
+        }
+    }
 }
