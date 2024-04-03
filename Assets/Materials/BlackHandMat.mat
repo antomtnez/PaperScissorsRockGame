@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: White-Hand
+  m_Name: BlackHandMat
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -40,7 +40,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: e0e3f7ebcaee74582bbefed2ff209097, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5545e4a9de9a44a378d21ae6af230fe0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -64,15 +64,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e0e3f7ebcaee74582bbefed2ff209097, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5545e4a9de9a44a378d21ae6af230fe0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 9806c8981db3d4a5d9825b879a8af6e2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 25780adbe09da488ba079bc33c4bbf0f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 188e2771915f24b26b8e2976587ecad7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4d689ec6eaca849e1ad9d0c95ebead75, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
