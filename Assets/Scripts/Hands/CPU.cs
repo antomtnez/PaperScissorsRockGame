@@ -9,10 +9,7 @@ public class CPU : Hand{
     }
 
     public override Choice GetChoice(){
-        return m_AIBehaviour.GetAIChoice();
-    }
-
-    public override void SetChoice(int choice){
-        throw new System.NotImplementedException();
+        m_Choice = m_AIBehaviour.GetAIChoice();
+        return m_Choice;
     }
 }

@@ -1,8 +1,12 @@
 public abstract class MatchState{
     protected Match m_Match;
+    protected IHandConstestant m_Player;
+    protected IHandConstestant m_CPU;
     protected MatchState m_NextState;
     public MatchState(Match match){
         m_Match = match;
+        m_Player = match.Player;
+        m_CPU = match.CPU;
     }
     public abstract void EnterState();
     public virtual void ChangeState(){
@@ -14,8 +18,14 @@ public class StartTurn : MatchState{
     public StartTurn(Match match) : base(match){}
 
     public override void EnterState(){
+        HandContestantsStartToShake();
         m_Match.TurnCountdown.Init();
         m_Match.TurnCountdown.onCountdownFinished += ChangeState;
+    }
+
+    void HandContestantsStartToShake(){
+        m_Player.StartShaking();
+        m_CPU.StartShaking();
     }
 
     public override void ChangeState(){
@@ -26,25 +36,28 @@ public class StartTurn : MatchState{
 }
 
 public class EndTurn : MatchState{
-    private IHandConstestant m_Player;
-    private IHandConstestant m_CPU;
     private Choice m_PlayerChoice;
     private Choice m_CPUChoice;
 
-    public EndTurn(Match match) : base(match){
-        m_Player = match.Player;
-        m_CPU = match.CPU;
-    }
+    public EndTurn(Match match) : base(match){}
     
     public override void EnterState(){
         SetChoices();
+        HandContestantsShowTheirChoices();
         WhoWinsThisTurn();
-        ChangeState();
+
+        m_Match.WaitToNextTurn();
+        m_Match.onWaitToNextTurnIsFinished += ChangeState;
     }
 
     public void SetChoices(){
         m_PlayerChoice = m_Player.GetChoice();
         m_CPUChoice = m_CPU.GetChoice();
+    }
+
+    void HandContestantsShowTheirChoices(){
+        m_Player.ShowYourChoice();
+        m_CPU.ShowYourChoice();
     }
 
     void WhoWinsThisTurn(){
@@ -91,24 +104,17 @@ public class EndTurn : MatchState{
                 m_NextState = new WinMatch(m_Match);
             }
         }else{
+            m_Player.CloseHand();
+            m_CPU.CloseHand();
             m_NextState = new StartTurn(m_Match);
         }
 
+        m_Match.onWaitToNextTurnIsFinished -= ChangeState;
         base.ChangeState();
     }
 
     bool IsMatchFinished(){
         return m_Player.IsDead() || m_CPU.IsDead();
-    }
-}
-
-public class ShowResult : MatchState
-{
-    public ShowResult(Match match) : base(match){}
-
-    public override void EnterState()
-    {
-        throw new System.NotImplementedException();
     }
 }
 

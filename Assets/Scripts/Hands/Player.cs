@@ -4,6 +4,11 @@ public class Player : Hand{
         m_HealthBarPresenter = new HealthBarPresenter(this, FindObjectOfType<PlayerHealthView>());
     }
 
+    public override void TakeDamage(int damage){
+        CameraShaker.Invoke();
+        base.TakeDamage(damage);
+    }
+
     public override Choice GetChoice(){
         return m_Choice;
     }

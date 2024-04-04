@@ -3,16 +3,14 @@ using DG.Tweening;
 
 public class HandShake : MonoBehaviour{
     [SerializeField] float MoveTime;
+    [SerializeField] int TotalShakes;
+    private int m_CurrentShakes = 0;
     [Header("Movement")]
     [SerializeField] float MoveOffset;
     [Header("Rotation")]
     [SerializeField] float RotationOffset;
 
-    void Start(){
-        ShakeMe();
-    }
-
-    public void ShakeMe(){
+    public void StartShaking(){
         transform.DORotate(transform.rotation.eulerAngles + new Vector3(RotationOffset, 0, 0), MoveTime);
         transform.DOMoveY(transform.position.y + MoveOffset, MoveTime).OnComplete(()=>{
             ComeBack();
@@ -22,7 +20,13 @@ public class HandShake : MonoBehaviour{
     void ComeBack(){
         transform.DORotate(transform.rotation.eulerAngles - new Vector3(RotationOffset, 0, 0), MoveTime);
         transform.DOMoveY(transform.position.y - MoveOffset, MoveTime).OnComplete(()=>{
-            ShakeMe();
+            if(m_CurrentShakes == TotalShakes){
+                m_CurrentShakes = 0;
+                transform.DOKill();
+            }else{
+                m_CurrentShakes++;
+                StartShaking();
+            }
         });
     }
 }
