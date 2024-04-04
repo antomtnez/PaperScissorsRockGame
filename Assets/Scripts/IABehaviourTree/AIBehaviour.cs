@@ -9,14 +9,10 @@ public class AIBehaviour{
         m_RandomNode = new RandomChoiceNode(m_AI);
     }
 
-    public Match.Choice GetAIChoice(){
+    public Choice GetAIChoice(){
         if(!m_EvaluateNode.Execute())
             m_RandomNode.Execute();
         
         return m_AI.ChosenMove;
-    }
-
-    public void AddMatchEntry(RockPaperScissorsAI.MatchHistoryEnter matchHistoryEnter){
-        m_AI.UpdateOpponentMove(matchHistoryEnter);
     }
 }
