@@ -2423,6 +2423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLeft: 3
+  timeBtwSeconds: 1.2
 --- !u!1 &1895796049
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,6 +3179,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6617284227144757532}
+    - targetCorrespondingSourceObject: {fileID: 7296667683570709772, guid: 930b7a19d446f4b4c9c810e37e84e625,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6617284227144757534}
   m_SourcePrefab: {fileID: 100100000, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
 --- !u!33 &4428712652280094202
 MeshFilter:
@@ -3205,6 +3210,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f37178ee6330f43bca14cf5b280275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6617284227144757534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6592586989612526801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16611a0176501e14a885ee734a75d72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveTime: 0.55
+  MoveOffset: 0.2
+  RotationOffset: 20
 --- !u!1001 &7847774052165724730
 PrefabInstance:
   m_ObjectHideFlags: 0

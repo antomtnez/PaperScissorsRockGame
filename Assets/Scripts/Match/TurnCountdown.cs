@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurnCountdown : MonoBehaviour{
     public int timeLeft = 3;
+    public float timeBtwSeconds = 1.5f;
     public event Action onCountdownFinished;
     private TurnCountdownPresenter m_CountdownPresenter;
 
@@ -17,7 +18,7 @@ public class TurnCountdown : MonoBehaviour{
     IEnumerator Countdown(){
         while(timeLeft > 0){
             m_CountdownPresenter.SetCountdownText(timeLeft);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(timeBtwSeconds);
             timeLeft--;
         }
 
