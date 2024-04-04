@@ -281,9 +281,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1888834009}
-        m_TargetAssemblyTypeName: Match, Assembly-CSharp
-        m_MethodName: SetPlayerChoice
+      - m_Target: {fileID: 6617284227144757532}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetChoice
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1000,7 +1000,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1888834009}
         m_TargetAssemblyTypeName: Match, Assembly-CSharp
-        m_MethodName: StartMatch
+        m_MethodName: StartTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1131,9 +1131,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1888834009}
-        m_TargetAssemblyTypeName: Match, Assembly-CSharp
-        m_MethodName: SetPlayerChoice
+      - m_Target: {fileID: 6617284227144757532}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetChoice
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2448,9 +2448,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1888834009}
-        m_TargetAssemblyTypeName: Match, Assembly-CSharp
-        m_MethodName: SetPlayerChoice
+      - m_Target: {fileID: 6617284227144757532}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetChoice
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
