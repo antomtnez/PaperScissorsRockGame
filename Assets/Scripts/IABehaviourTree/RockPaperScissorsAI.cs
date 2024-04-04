@@ -1,17 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RockPaperScissorsAI{ 
-    public class MatchHistoryEnter{
-        public Match.Choice playerChoice;
-        public Match.Choice iAChoice;
-        public int result;
-    }
-
-    private List<MatchHistoryEnter> m_MatchHistory = new List<MatchHistoryEnter>();
     private float rockProb, scissorsProb, paperProb;
-    private Match.Choice m_ChosenMove;
-    public Match.Choice ChosenMove => m_ChosenMove;
+    private Choice m_ChosenMove;
+    public Choice ChosenMove => m_ChosenMove;
 
     public RockPaperScissorsAI(){
         rockProb = 0; 
@@ -19,26 +11,49 @@ public class RockPaperScissorsAI{
         paperProb = 0;
     }
 
-    public void UpdateOpponentMove(MatchHistoryEnter matchHistoryEnter){
-        m_MatchHistory.Add(matchHistoryEnter);
-
-        if(m_MatchHistory.Count > 0)
+    // This is the logic to chose a move
+    // Return true if chosen move is based in probabilities
+    // Return false if chosen move is a random move
+    public bool EvaluateProbabilitiesAndChooseMove(){
+        if(GameManager.Instance.TurnHistory.Count > 0)
             CalculateProbabilities();
+
+        if(GetNextChoice() > 0.5f)
+            return true;
+            
+        return false;
+    }
+
+    //AI chose the element it allows to win the match
+    float GetNextChoice(){
+        m_ChosenMove = Choice.Paper;
+        float max = rockProb;
+        if(scissorsProb > max){
+            m_ChosenMove = Choice.Rock;
+            max = scissorsProb;
+        }
+        if(paperProb > max) {
+            m_ChosenMove = Choice.Scissors;
+            max = paperProb;
+        }
+
+        return max;
     }
 
     void CalculateProbabilities(){
-        foreach(MatchHistoryEnter matchHistoryEnter in m_MatchHistory){
-            if(matchHistoryEnter.playerChoice == Match.Choice.Rock) rockProb++;
-            if(matchHistoryEnter.playerChoice == Match.Choice.Scissors) scissorsProb++;
-            if(matchHistoryEnter.playerChoice == Match.Choice.Paper) paperProb++;
+        for(int i = GameManager.Instance.TurnHistory.Count - 1; i >= 0; i--){
+            if(i <= GameManager.Instance.TurnHistory.Count - 21) break;
+            if(GameManager.Instance.TurnHistory[i].playerChoice == Choice.Rock) rockProb++;
+            if(GameManager.Instance.TurnHistory[i].playerChoice == Choice.Scissors) scissorsProb++;
+            if(GameManager.Instance.TurnHistory[i].playerChoice == Choice.Paper) paperProb++;
         }
 
-        if(m_MatchHistory.Count >= 2)
+        if(GameManager.Instance.TurnHistory.Count >= 2)
             TakeAccountPlaysRecurrenceOnProbabilities();
 
-        rockProb /= m_MatchHistory.Count;
-        scissorsProb /=  m_MatchHistory.Count;
-        paperProb /=  m_MatchHistory.Count;
+        rockProb /= GameManager.Instance.TurnHistory.Count;
+        scissorsProb /=  GameManager.Instance.TurnHistory.Count;
+        paperProb /=  GameManager.Instance.TurnHistory.Count;
 
         //Normalize probabilities fitted to 1
         float totalProb = rockProb + scissorsProb + paperProb;
@@ -51,8 +66,8 @@ public class RockPaperScissorsAI{
     //To the immediately preceding move we don't add anything, 
     //to the previous move we add 0.5 and to the remaining one we add 1
     void TakeAccountPlaysRecurrenceOnProbabilities(){
-        if(m_MatchHistory[m_MatchHistory.Count-1].playerChoice == Match.Choice.Rock){
-            if(m_MatchHistory[m_MatchHistory.Count-2].playerChoice == Match.Choice.Scissors){
+        if(GameManager.Instance.TurnHistory[GameManager.Instance.TurnHistory.Count-1].playerChoice == Choice.Rock){
+            if(GameManager.Instance.TurnHistory[GameManager.Instance.TurnHistory.Count-2].playerChoice == Choice.Scissors){
                 scissorsProb += .5f;
                 paperProb += 1f;
             }else{
@@ -60,8 +75,8 @@ public class RockPaperScissorsAI{
                 scissorsProb += 1f;
             }
         }
-        if(m_MatchHistory[m_MatchHistory.Count-1].playerChoice == Match.Choice.Scissors){
-            if(m_MatchHistory[m_MatchHistory.Count-2].playerChoice == Match.Choice.Rock){
+        if(GameManager.Instance.TurnHistory[GameManager.Instance.TurnHistory.Count-1].playerChoice == Choice.Scissors){
+            if(GameManager.Instance.TurnHistory[GameManager.Instance.TurnHistory.Count-2].playerChoice == Choice.Rock){
                 rockProb += .5f;
                 paperProb += 1f;
             }else{
@@ -69,8 +84,8 @@ public class RockPaperScissorsAI{
                 rockProb += 1f;
             }
         }
-        if(m_MatchHistory[m_MatchHistory.Count-1].playerChoice == Match.Choice.Paper){
-            if(m_MatchHistory[m_MatchHistory.Count-2].playerChoice == Match.Choice.Rock){
+        if(GameManager.Instance.TurnHistory[GameManager.Instance.TurnHistory.Count-1].playerChoice == Choice.Paper){
+            if(GameManager.Instance.TurnHistory[GameManager.Instance.TurnHistory.Count-2].playerChoice == Choice.Rock){
                 rockProb += .5f;
                 scissorsProb += 1f;
             }else{
@@ -78,35 +93,9 @@ public class RockPaperScissorsAI{
                 rockProb += 1f;
             }
         }
-    }
-
-    // This is the logic to chose a move
-    // Return true if chosen move is based in probabilities
-    // Return false if chosen move is a random move
-    public bool EvaluateProbabilitiesAndChooseMove(){
-        if(GetNextChoice() > 0.5f)
-            return true;
-            
-        return false;
-    }
-
-    //AI chose the element it allows to win the match
-    float GetNextChoice(){
-        m_ChosenMove = Match.Choice.Paper;
-        float max = rockProb;
-        if(scissorsProb > max){
-            m_ChosenMove = Match.Choice.Rock;
-            max = scissorsProb;
-        }
-        if(paperProb > max) {
-            m_ChosenMove = Match.Choice.Scissors;
-            max = paperProb;
-        }
-
-        return max;
     }
 
     public void MakeRandomChoice(){
-        m_ChosenMove = (Match.Choice)Random.Range(0, 3);
+        m_ChosenMove = (Choice)Random.Range(0, 3);
     }
 }

@@ -2,16 +2,14 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class MatchCountdown : MonoBehaviour{
+public class TurnCountdown : MonoBehaviour{
     public int timeLeft = 3;
+    public float timeBtwSeconds = 1.5f;
     public event Action onCountdownFinished;
-    private MatchCountdownPresenter m_CountdownPresenter;
-
-    void Start(){
-        m_CountdownPresenter = new MatchCountdownPresenter(this, FindObjectOfType<MatchCountdownView>());
-    }
+    private TurnCountdownPresenter m_CountdownPresenter;
 
     public void Init(){
+        m_CountdownPresenter = new TurnCountdownPresenter(this, FindObjectOfType<TurnCountdownView>());
         timeLeft = 3;
         StartCoroutine(Countdown());
         m_CountdownPresenter.StartCountdown();
@@ -20,7 +18,7 @@ public class MatchCountdown : MonoBehaviour{
     IEnumerator Countdown(){
         while(timeLeft > 0){
             m_CountdownPresenter.SetCountdownText(timeLeft);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(timeBtwSeconds);
             timeLeft--;
         }
 

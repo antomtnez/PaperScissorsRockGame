@@ -1,8 +1,8 @@
-public class MatchCountdownPresenter{
-    private MatchCountdown m_MatchCountdown;
-    private MatchCountdownView m_View;
+public class TurnCountdownPresenter{
+    private TurnCountdown m_MatchCountdown;
+    private TurnCountdownView m_View;
 
-    public MatchCountdownPresenter(MatchCountdown matchCountdown, MatchCountdownView countdownView){
+    public TurnCountdownPresenter(TurnCountdown matchCountdown, TurnCountdownView countdownView){
         m_MatchCountdown = matchCountdown;
         m_View = countdownView;
         m_MatchCountdown.onCountdownFinished += FinishCountdown;
