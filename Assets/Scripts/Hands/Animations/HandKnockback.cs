@@ -8,8 +8,15 @@ public class HandKnockback : HandAnimation{
     [Header("Movement")]
     [SerializeField] float KnockbackOffset;
 
+    [Header("Hand Side")]
+    [SerializeField] bool IsOnRight = false;
+
     public override void StartAnimation(){
-        DamageKnockback();
+        if(IsOnRight){
+            DamageKnockbackGlassed();
+        }else{
+            DamageKnockback();
+        }
     }
 
     void DamageKnockback(){
@@ -21,5 +28,16 @@ public class HandKnockback : HandAnimation{
 
     void Comeback(){
         m_Hand.DOLocalMoveX(m_Hand.position.x + KnockbackOffset, RecoveryTime);
+    }
+
+    void DamageKnockbackGlassed(){
+        CameraShaker.Invoke();
+        m_Hand.DOLocalMoveX(m_Hand.position.x + KnockbackOffset, KnockbackTime).OnComplete(() => {
+            ComebackGlassed();
+        });
+    }
+
+    void ComebackGlassed(){
+        m_Hand.DOLocalMoveX(m_Hand.position.x - KnockbackOffset, RecoveryTime);
     }
 }

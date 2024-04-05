@@ -984,6 +984,7 @@ MonoBehaviour:
   KnockbackTime: 0.05
   RecoveryTime: 0.8
   KnockbackOffset: 0.5
+  IsOnRight: 0
 --- !u!1 &630969179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,12 +1905,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1277504899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b5066a1f980564449d32564b02ec4ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 092ea4de07ae43747a049d72e1230bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KnockbackTime: 0.2
-  RecoveryTime: 0.6
-  KnockbackOffset: 0.8
+  KnockbackTime: 0.05
+  RecoveryTime: 0.8
+  KnockbackOffset: 0.5
+  IsOnRight: 1
 --- !u!1 &1429578700
 GameObject:
   m_ObjectHideFlags: 0

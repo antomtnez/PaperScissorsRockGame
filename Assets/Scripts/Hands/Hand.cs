@@ -31,6 +31,7 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
 
     public virtual void TakeDamage(int damage){
         DamageTakenFX.StartFX();
+        HandAnimatorController.StartAnimation("HandKnockback");
         
         int damageTaken = Mathf.Min(m_Health, damage);
         m_Health -= damageTaken;
