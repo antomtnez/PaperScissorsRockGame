@@ -30,12 +30,16 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
     }
 
     public virtual void TakeDamage(int damage){
-        DamageTakenFX.StartFX();
-        HandAnimatorController.StartAnimation("HandKnockback");
-        
         int damageTaken = Mathf.Min(m_Health, damage);
         m_Health -= damageTaken;
         m_HealthBarPresenter.SetHealth();
+
+        DamageTakenFX.StartFX();
+        if(IsDead()){
+            HandAnimatorController.StartAnimation("HandDead");
+        }else{
+            HandAnimatorController.StartAnimation("HandKnockback");
+        }
     }
 
     public bool IsDead(){      
