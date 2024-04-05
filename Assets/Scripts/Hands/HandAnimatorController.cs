@@ -25,8 +25,8 @@ public class HandAnimatorController : MonoBehaviour{
         m_HandAnimatorController.SetInteger("Choice", 0);
     }
 
-    public void StartShaking(){
-        m_HandAnimations.TryGetValue("HandShake", out HandAnimation handAnimation);
+    public void StartAnimation(string animationKey){
+        m_HandAnimations.TryGetValue(animationKey, out HandAnimation handAnimation);
         handAnimation.StartAnimation();
     }
 }

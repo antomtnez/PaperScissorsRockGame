@@ -11,6 +11,7 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
 
     protected HealthBarPresenter m_HealthBarPresenter;
     public HandAnimatorController HandAnimatorController;
+    [SerializeField] DamageTakenFX DamageTakenFX;
     
 
     void Awake(){
@@ -29,6 +30,8 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
     }
 
     public virtual void TakeDamage(int damage){
+        DamageTakenFX.StartFX();
+        
         int damageTaken = Mathf.Min(m_Health, damage);
         m_Health -= damageTaken;
         m_HealthBarPresenter.SetHealth();
@@ -43,7 +46,7 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
     }
 
     public void StartShaking(){
-        HandAnimatorController.StartShaking();
+        HandAnimatorController.StartAnimation("HandShake");
     }
 
     public void CloseHand(){

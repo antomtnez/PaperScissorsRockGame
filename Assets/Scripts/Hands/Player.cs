@@ -5,7 +5,7 @@ public class Player : Hand{
     }
 
     public override void TakeDamage(int damage){
-        //CameraShaker.Invoke();
+        HandAnimatorController.StartAnimation("HandKnockback");
         base.TakeDamage(damage);
     }
 

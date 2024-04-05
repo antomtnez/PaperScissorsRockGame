@@ -27,7 +27,6 @@ public class HandShake : HandAnimation{
         m_Hand.DOMoveY(m_Hand.position.y - MoveOffset, MoveTime).OnComplete(()=>{
             if(m_CurrentShakes == TotalShakes){
                 m_CurrentShakes = 0;
-                m_Hand.DOKill();
             }else{
                 m_CurrentShakes++;
                 StartShaking();
