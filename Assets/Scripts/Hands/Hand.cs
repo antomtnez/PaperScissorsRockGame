@@ -2,22 +2,20 @@ using UnityEngine;
 
 public enum Choice { Rock, Paper, Scissors };
 
-[RequireComponent(typeof(Animator), typeof(HandShake))]
 public abstract class Hand : MonoBehaviour, IHandConstestant{
     protected int m_Health;
-    protected int m_MaxHealth = 10;
+    protected int m_MaxHealth = 5;
     protected Choice m_Choice;
     public int Health => m_Health;
     public int MaxHealth => m_MaxHealth;
 
-    private HandShake HandShake;
     protected HealthBarPresenter m_HealthBarPresenter;
     public HandAnimatorController HandAnimatorController;
+    [SerializeField] DamageTakenFX DamageTakenFX;
     
 
     void Awake(){
-        HandAnimatorController = new HandAnimatorController(GetComponent<Animator>());
-        HandShake = GetComponent<HandShake>();
+        HandAnimatorController = GetComponent<HandAnimatorController>();
     }
 
     public void SetMaxHealth(int maxHealth){
@@ -32,6 +30,9 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
     }
 
     public virtual void TakeDamage(int damage){
+        DamageTakenFX.StartFX();
+        HandAnimatorController.StartAnimation("HandKnockback");
+        
         int damageTaken = Mathf.Min(m_Health, damage);
         m_Health -= damageTaken;
         m_HealthBarPresenter.SetHealth();
@@ -42,14 +43,18 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
     }
 
     public void ShowYourChoice(){
-        HandAnimatorController.SetChoiceAnimation(m_Choice);
+        HandAnimatorController.ChoiceAnimation(m_Choice);
     }
 
     public void StartShaking(){
-        HandShake.StartShaking();
+        HandAnimatorController.StartAnimation("HandShake");
     }
 
     public void CloseHand(){
         HandAnimatorController.CloseHandAnimation();
+    }
+
+    public void WinnerCelebration(){
+        HandAnimatorController.WinnerAnimation();
     }
 }

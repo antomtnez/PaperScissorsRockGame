@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraShaker : MonoBehaviour{
     private Camera m_Camera;
+    [SerializeField] float ShakeTime;
     [SerializeField] Vector3 PositionStrenght;
 
     private static event Action Shake;
@@ -20,7 +21,7 @@ public class CameraShaker : MonoBehaviour{
 
     void CameraShake(){
         m_Camera.DOComplete();
-        m_Camera.DOShakePosition(.5f, PositionStrenght);
+        m_Camera.DOShakePosition(ShakeTime, PositionStrenght);
     }
     
 }
