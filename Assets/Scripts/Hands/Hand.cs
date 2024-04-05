@@ -2,7 +2,6 @@ using UnityEngine;
 
 public enum Choice { Rock, Paper, Scissors };
 
-[RequireComponent(typeof(Animator), typeof(HandShake))]
 public abstract class Hand : MonoBehaviour, IHandConstestant{
     protected int m_Health;
     protected int m_MaxHealth = 10;
@@ -10,14 +9,12 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
     public int Health => m_Health;
     public int MaxHealth => m_MaxHealth;
 
-    private HandShake HandShake;
     protected HealthBarPresenter m_HealthBarPresenter;
     public HandAnimatorController HandAnimatorController;
     
 
     void Awake(){
-        HandAnimatorController = new HandAnimatorController(GetComponent<Animator>());
-        HandShake = GetComponent<HandShake>();
+        HandAnimatorController = GetComponent<HandAnimatorController>();
     }
 
     public void SetMaxHealth(int maxHealth){
@@ -42,11 +39,11 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
     }
 
     public void ShowYourChoice(){
-        HandAnimatorController.SetChoiceAnimation(m_Choice);
+        HandAnimatorController.ChoiceAnimation(m_Choice);
     }
 
     public void StartShaking(){
-        HandShake.StartShaking();
+        HandAnimatorController.StartShaking();
     }
 
     public void CloseHand(){

@@ -5,7 +5,7 @@ public class Player : Hand{
     }
 
     public override void TakeDamage(int damage){
-        CameraShaker.Invoke();
+        //CameraShaker.Invoke();
         base.TakeDamage(damage);
     }
 
