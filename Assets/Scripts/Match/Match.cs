@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public interface IHandConstestant{
@@ -10,6 +9,7 @@ public interface IHandConstestant{
     public Choice GetChoice();
     public void ShowYourChoice();
     public void CloseHand();
+    public void WinnerCelebration();
 }
 
 public class Match : MonoBehaviour{

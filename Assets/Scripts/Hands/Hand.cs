@@ -4,7 +4,7 @@ public enum Choice { Rock, Paper, Scissors };
 
 public abstract class Hand : MonoBehaviour, IHandConstestant{
     protected int m_Health;
-    protected int m_MaxHealth = 10;
+    protected int m_MaxHealth = 5;
     protected Choice m_Choice;
     public int Health => m_Health;
     public int MaxHealth => m_MaxHealth;
@@ -52,5 +52,9 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
 
     public void CloseHand(){
         HandAnimatorController.CloseHandAnimation();
+    }
+
+    public void WinnerCelebration(){
+        HandAnimatorController.WinnerAnimation();
     }
 }

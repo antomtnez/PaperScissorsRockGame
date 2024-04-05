@@ -29,4 +29,8 @@ public class HandAnimatorController : MonoBehaviour{
         m_HandAnimations.TryGetValue(animationKey, out HandAnimation handAnimation);
         handAnimation.StartAnimation();
     }
+
+    public void WinnerAnimation(){
+        m_HandAnimatorController.SetTrigger("IsWinner");
+    }
 }

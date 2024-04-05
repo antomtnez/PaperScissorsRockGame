@@ -122,12 +122,16 @@ public class WinMatch : MatchState
 {
     public WinMatch(Match match) : base(match){}
 
-    public override void EnterState(){}
+    public override void EnterState(){
+        m_Player.WinnerCelebration();
+    }
 }
 
 public class LoseMatch : MatchState
 {
     public LoseMatch(Match match) : base(match){}
 
-    public override void EnterState(){}
+    public override void EnterState(){
+        m_CPU.WinnerCelebration();
+    }
 }
