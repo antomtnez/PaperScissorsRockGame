@@ -189,7 +189,7 @@ PrefabInstance:
     - target: {fileID: 5713949659430823116, guid: 1eb4e943253243a4aa6d9f4310e1779f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608c6b4d0f0a8014984abe6e2dffaab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShakeTime: 0.6
-  PositionStrenght: {x: 0.1, y: 0.1, z: 0}
+  ShakeTime: 0.8
+  PositionStrenght: {x: 0.15, y: 0.15, z: 0}
 --- !u!1 &271146873
 GameObject:
   m_ObjectHideFlags: 0
@@ -4155,6 +4155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.29303673
+      objectReference: {fileID: 0}
+    - target: {fileID: 729665118162038341, guid: dfa150595d6da3b478b589819cb1d3df,
+        type: 3}
+      propertyPath: m_MaxHealth
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 955009222976453881, guid: dfa150595d6da3b478b589819cb1d3df,
         type: 3}

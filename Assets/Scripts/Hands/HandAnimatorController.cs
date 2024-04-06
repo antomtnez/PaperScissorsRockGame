@@ -33,4 +33,10 @@ public class HandAnimatorController : MonoBehaviour{
     public void WinnerAnimation(){
         m_HandAnimatorController.SetTrigger("IsWinner");
     }
+
+    public void DamageAnimation(){
+        m_HandAnimatorController.SetTrigger("Damaged");
+        m_HandAnimations.TryGetValue("HandKnockback", out HandAnimation handAnimation);
+        handAnimation.StartAnimation();
+    }
 }
