@@ -9,14 +9,14 @@ public class TurnCountdownPresenter{
     }
 
     public void StartCountdown(){
-        m_View.ShowCountdownText();
+        m_View.ShowCountdownPanel();
     }
 
     public void SetCountdownText(int count){
-        m_View.SetCountdownText($"{count}");
+        m_View.SetCountdown(count);
     }
 
     void FinishCountdown(){
-        m_View.HideCountdownText();
+        m_View.HideCountdownPanel();
     }
 }

@@ -4,7 +4,7 @@ public enum Choice { Rock, Paper, Scissors };
 
 public abstract class Hand : MonoBehaviour, IHandConstestant{
     protected int m_Health;
-    protected int m_MaxHealth = 5;
+    [SerializeField] protected int m_MaxHealth = 5;
     protected Choice m_Choice;
     public int Health => m_Health;
     public int MaxHealth => m_MaxHealth;
@@ -38,7 +38,7 @@ public abstract class Hand : MonoBehaviour, IHandConstestant{
         if(IsDead()){
             HandAnimatorController.StartAnimation("HandDead");
         }else{
-            HandAnimatorController.StartAnimation("HandKnockback");
+            HandAnimatorController.DamageAnimation();;
         }
     }
 
