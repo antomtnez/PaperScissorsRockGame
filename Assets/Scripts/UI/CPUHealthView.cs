@@ -1,5 +1,1 @@
-public class CPUHealthView : HealthBarView{
-    void Start(){
-        SetNameText("CPU");
-    }
-}
+public class CPUHealthView : HealthBarView{}

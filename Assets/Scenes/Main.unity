@@ -1048,7 +1048,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 0
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 523913133}
   m_FillRect: {fileID: 978347756}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561416438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1211,7 +1211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce70b9f36661cc541be9b2c703062e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NameText: {fileID: 0}
   HealthSlider: {fileID: 982376144}
   DamagedSlider: {fileID: 810036751}
 --- !u!1 &590172234
@@ -1903,7 +1902,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 0
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 808787705}
   m_FillRect: {fileID: 2143218908}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -2168,7 +2167,7 @@ GameObject:
   - component: {fileID: 978347758}
   - component: {fileID: 978347757}
   m_Layer: 5
-  m_Name: HealthBar
+  m_Name: DamagedBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2206,7 +2205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.9811321, b: 0.69789964, a: 1}
+  m_Color: {r: 0.6320754, g: 0.07990386, b: 0.21853785, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2430,7 +2429,7 @@ Transform:
   m_GameObject: {fileID: 1014362939}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2775,7 +2774,7 @@ GameObject:
   - component: {fileID: 1318102443}
   - component: {fileID: 1318102442}
   m_Layer: 5
-  m_Name: HealthBar
+  m_Name: DamagedBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2813,7 +2812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.9811321, b: 0.69789964, a: 1}
+  m_Color: {r: 0.6320754, g: 0.07990386, b: 0.21853785, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3205,7 +3204,6 @@ GameObject:
   - component: {fileID: 1618285800}
   - component: {fileID: 1618285803}
   - component: {fileID: 1618285802}
-  - component: {fileID: 1618285801}
   m_Layer: 5
   m_Name: HUDPanel
   m_TagString: Untagged
@@ -3235,32 +3233,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -107.93329}
   m_SizeDelta: {x: 0, y: 215.8666}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1618285801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618285799}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &1618285802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3268,7 +3240,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618285799}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3870,7 +3842,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016378785}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3913,7 +3885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78db41dc8680834993d99cde69d1ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NameText: {fileID: 0}
   HealthSlider: {fileID: 808787703}
   DamagedSlider: {fileID: 523913131}
 --- !u!1 &2042191855

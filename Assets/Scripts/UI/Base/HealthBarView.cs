@@ -1,17 +1,11 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBarView : MonoBehaviour{
-    [SerializeField] TextMeshProUGUI NameText;
     [SerializeField] Slider HealthSlider;
     [SerializeField] Slider DamagedSlider;
     private float m_DamagedSliderTimer;
-
-    protected void SetNameText(string name){
-        NameText.SetText(name);
-    }
 
     public void SetMaxHealth(int health){
         HealthSlider.maxValue  = health;
@@ -24,17 +18,6 @@ public class HealthBarView : MonoBehaviour{
         HealthSlider.value  = health;
         StartCoroutine(DamagedSliderDecreaseDelayed());
     }
-    /*
-    void Update(){
-        m_DamagedSliderTimer -= Time.deltaTime;
-        if(m_DamagedSliderTimer <= 0){
-            if(HealthSlider.value < DamagedSlider.value){
-                float decreaseSpeed = 1f;
-                DamagedSlider.value -= decreaseSpeed * Time.deltaTime;
-            }
-        }
-    }
-    */
 
     IEnumerator DamagedSliderDecreaseDelayed(){
         yield return new WaitForSeconds(.5f);

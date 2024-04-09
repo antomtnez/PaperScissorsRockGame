@@ -1,5 +1,1 @@
-public class PlayerHealthView : HealthBarView{
-    void Start(){
-        SetNameText("P1");
-    }
-}
+public class PlayerHealthView : HealthBarView{}
