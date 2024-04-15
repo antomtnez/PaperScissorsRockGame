@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnHistoryEnter{
     public Choice playerChoice;
@@ -23,5 +24,9 @@ public class GameManager : MonoBehaviour{
 
     public void UpdateTurnHistory(TurnHistoryEnter turnHistoryEnter){
         m_TurnHistory.Add(turnHistoryEnter);
+    }
+
+    public void RestartGame(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

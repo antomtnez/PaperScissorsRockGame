@@ -118,12 +118,12 @@ public class EndTurn : MatchState{
     }
 }
 
-public class WinMatch : MatchState
-{
+public class WinMatch : MatchState{
     public WinMatch(Match match) : base(match){}
 
     public override void EnterState(){
         m_Player.WinnerCelebration();
+        m_Match.WinnerAnimation();
     }
 }
 
@@ -133,5 +133,6 @@ public class LoseMatch : MatchState
 
     public override void EnterState(){
         m_CPU.WinnerCelebration();
+        m_Match.LoserAnimation();
     }
 }

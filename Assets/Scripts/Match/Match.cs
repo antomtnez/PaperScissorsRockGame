@@ -18,6 +18,7 @@ public class Match : MonoBehaviour{
     private float m_CurrentTimeBtwTurns;
     [HideInInspector] public IHandConstestant Player;
     [HideInInspector] public IHandConstestant CPU;
+    private EndMatchAnimation m_EndMatchAnimation;
 
     private MatchState m_MatchState;
     public event Action onWaitToNextTurnIsFinished;
@@ -25,6 +26,7 @@ public class Match : MonoBehaviour{
     void Start(){
         Player = FindObjectOfType<Player>().GetComponent<IHandConstestant>();
         CPU = FindObjectOfType<CPU>().GetComponent<IHandConstestant>();
+        m_EndMatchAnimation = FindObjectOfType<EndMatchAnimation>();
 
         ChangeState(new StartTurn(this));
     }
@@ -46,5 +48,13 @@ public class Match : MonoBehaviour{
         }
 
         onWaitToNextTurnIsFinished?.Invoke();
+    }
+
+    public void LoserAnimation(){
+        m_EndMatchAnimation.LoseAnimation();
+    }
+
+    public void WinnerAnimation(){
+        m_EndMatchAnimation.WinnerAnimation();
     }
 }
